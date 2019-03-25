@@ -1,0 +1,14 @@
+----USER----
+	User Profile
+	List of uploaded pictures
+		Upload
+		Download
+		Rename
+		View list of comments
+		Add comment
+		Hide/unhide picture
+	Following other users
+	Newsfeed
+		Like, Dislike picture
+		Comment on picture
+	Activity Log for all actions
