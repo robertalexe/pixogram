@@ -1,0 +1,28 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav mode="over">
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h2> Pixogram App </h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-nav-list>
+
+      <h2 matSubheader> My Work </h2>
+
+      <mat-divider></mat-divider>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-toolbar
+      (toggleSidenav)="sidenav.toggle()">
+    </app-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
