@@ -20,7 +20,7 @@
 
   <mat-sidenav-content>
     <app-toolbar
-      (toggleSidenav)="sidenav.toggle()">
+      (toggleSidenav)="sidenav.toggle()" [loggedInUser]="loggedInUser">
     </app-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

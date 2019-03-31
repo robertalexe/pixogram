@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['homepage']);
-          location.reload();
+          this.router.navigate(['/homepage']);
+          //location.reload();
         },
         error => {
           this.router.navigate(['/forbidden'])

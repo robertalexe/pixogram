@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import {AuthenticationService} from "./_services/authentication.service";
-import {User} from "./_models/user";
-import {HttpClient} from "@angular/common/http";
-import {SingleValue} from "./_models/single-value";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +9,14 @@ import {SingleValue} from "./_models/single-value";
 export class AppComponent {
   title = 'pixogramApp';
 
-  constructor() { }
+  private authenticatedUser:boolean = false;
 
+  constructor(private authService:AuthenticationService) {
+    this.authService.currentUserSubject.subscribe((data) => {
+      if (data.username) {
+        this.authenticatedUser = true;
+      }
+      ;
+    })
+  }
 }
