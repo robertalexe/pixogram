@@ -1,0 +1,32 @@
+<br><br><br><br>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Click to show details
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+      <mat-card>Email: {{userProfile.email}}</mat-card>
+      <mat-divider></mat-divider>
+      <mat-card>First Name: {{userProfile.firstName}}</mat-card>
+      <mat-divider></mat-divider>
+      <mat-card>Last Name: {{userProfile.lastName}}</mat-card>
+      <mat-divider></mat-divider>
+      <mat-card>Registration Date: {{userProfile.registrationDate}}</mat-card>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Profile Picture
+      </mat-panel-title>
+      <mat-panel-description>
+        Click to show details
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-img-wrapper [src]="getUserProfilePictureUrl()"></app-img-wrapper>
+  </mat-expansion-panel>
+</mat-accordion>

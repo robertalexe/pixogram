@@ -4,6 +4,10 @@ import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./_guards/auth.guard";
 import {ForbiddenComponent} from "./forbidden/forbidden.component";
 import {HomepageComponent} from "./homepage/homepage.component";
+import {UploadPictureComponent} from "./upload-picture/upload-picture.component";
+import {UserPictureGalleryComponent} from "./user-picture-gallery/user-picture-gallery.component";
+import {SubscribeListComponent} from "./subscribe-list/subscribe-list.component";
+import {ProfilePageComponent} from "./profile-page/profile-page.component";
 
 const routes: Routes = [
   {
@@ -22,7 +26,27 @@ const routes: Routes = [
     canActivate: []
   },
   {
-    path: '**', redirectTo: ''
+    path: 'upload-picture',
+    component: UploadPictureComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'picture-gallery',
+    component: UserPictureGalleryComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'subscribers-list',
+    component: SubscribeListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**', redirectTo: 'homepage'
   }
 ];
 

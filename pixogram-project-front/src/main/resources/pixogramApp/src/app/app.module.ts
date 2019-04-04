@@ -20,6 +20,11 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { UploadPictureComponent } from './upload-picture/upload-picture.component';
 import {UploadPictureService} from "./_services/upload-picture.service";
+import { UserPictureGalleryComponent } from './user-picture-gallery/user-picture-gallery.component';
+import { PictureDialogComponent } from './picture-dialog/picture-dialog.component';
+import { SubscribeListComponent } from './subscribe-list/subscribe-list.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { ImgWrapperComponent } from './img-wrapper/img-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import {UploadPictureService} from "./_services/upload-picture.service";
     ToolbarComponent,
     HomepageComponent,
     SidebarComponent,
-    UploadPictureComponent
+    UploadPictureComponent,
+    UserPictureGalleryComponent,
+    PictureDialogComponent,
+    SubscribeListComponent,
+    ProfilePageComponent,
+    ImgWrapperComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +64,9 @@ import {UploadPictureService} from "./_services/upload-picture.service";
   exports: [
     MatListModule,
     MatSidenavModule
+  ],
+  entryComponents: [
+    PictureDialogComponent
   ],
   bootstrap: [AppComponent]
 })

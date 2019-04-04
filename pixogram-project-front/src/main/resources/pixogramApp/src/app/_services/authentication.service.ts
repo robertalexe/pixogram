@@ -8,15 +8,11 @@ import {User} from "../_models/user";
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   public currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
-  }
-
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
   }
 
   login(username: string, password: string) {
@@ -27,15 +23,9 @@ export class AuthenticationService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
-          console.log(user);
         }
-
         return user;
       }));
-  }
-
-  getUserRole() {
-    return this.currentUserSubject.getValue().userType;
   }
 
   logout() {

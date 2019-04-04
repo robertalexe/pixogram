@@ -1,6 +1,7 @@
 package com.robert.fullstack.domain.pictures;
 
 import com.robert.fullstack.domain.DDD;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.util.UUID;
 
 @DDD.Entity
 @Entity @Table(name = "USER_PICTURE_COMMENTS")
-@NoArgsConstructor @Getter @Setter
+@NoArgsConstructor @Getter @Setter @AllArgsConstructor
 public class PictureComment {
 
     @Id
@@ -23,8 +24,6 @@ public class PictureComment {
     private String pictureId;
     @Column(name = "COMMENT")
     private String comment;
-    @Column(name = "USER_ID")
-    private String userEmail;
     @Column(name = "COMMENT_DATE")
     private LocalDateTime commentDate;
 }

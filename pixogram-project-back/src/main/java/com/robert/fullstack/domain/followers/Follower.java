@@ -1,6 +1,7 @@
 package com.robert.fullstack.domain.followers;
 
 import com.robert.fullstack.domain.DDD;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 @DDD.Entity
 @Entity @Table(name = "FOLLOWERS")
-@NoArgsConstructor @Getter @Setter
+@NoArgsConstructor @Getter @Setter @AllArgsConstructor
 public class Follower {
 
     @Id @NotNull
@@ -24,8 +25,5 @@ public class Follower {
     private String followerEmail;
     @Column(name = "FOLLOWED_ID")
     private String followedEmail;
-    @Column(name = "FOLLOWED_DATE")
-    private LocalDateTime followedDate;
-
 
 }

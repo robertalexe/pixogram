@@ -1,0 +1,30 @@
+
+<div>
+  <app-img-wrapper [src]="data.pic"></app-img-wrapper>
+</div>
+<br>
+<div>
+  <hr>
+  <!--mat-dialog-actions>
+    <button md-raised-button (click)="onCloseConfirm()">Like</button>&nbsp;
+    <button md-raised-button (click)="onCloseCancel()">Dislike</button>
+  </mat-dialog-actions-->
+</div>
+<br>
+<div *ngFor="let comment of comments" class="panel panel-warning">
+  <br>
+  <div class="panel-heading">
+    <h3 class="panel-title">Comment Id: {{comment.id}}</h3>
+  </div>
+  <div class="panel-body">
+    Comment text: {{comment.comment}}
+  </div>
+</div>
+
+<form [formGroup]="myForm" (ngSubmit)="addComment(myForm.value)">
+  <textarea matInput placeholder="Leave a comment" [formControl]="myForm.controls['newComment']"></textarea>
+
+  <div>
+    <button mat-raised-button type="submit">Submit</button>
+  </div>
+</form>

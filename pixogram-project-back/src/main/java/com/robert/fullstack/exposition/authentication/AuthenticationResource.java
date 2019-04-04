@@ -24,7 +24,7 @@ public class AuthenticationResource {
     public AuthToken loginUser(@RequestBody LoginUser loginUser) throws AuthenticationException {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.username, loginUser.password));
         User user = users.findOne(loginUser.username);
-        String token = jwtTokenUtil.generateToken(user.getId());
-        return new AuthToken(token, user.getId());
+        String token = jwtTokenUtil.generateToken(user.getEmail());
+        return new AuthToken(token, user.getEmail());
     }
 }

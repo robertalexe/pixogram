@@ -12,16 +12,16 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
-@DDD.Entity
+@DDD.AggregateRoot
 @Entity @Table(name = "USER_PICTURES")
 @NoArgsConstructor @Getter @Setter @AllArgsConstructor
 public class Picture {
 
     @Id
-    private String id;
+    private String pictureId;
 
-    @Column(name = "UPLOADER_ID")
-    private String uploaderEmail;
+    @Column(name = "OWNER_EMAIL")
+    private String ownerEmail;
 
     @Embedded
     private ImagePath imagePath;
@@ -29,8 +29,8 @@ public class Picture {
     @Column(name = "PICTURE_NAME")
     private String name;
 
-    @Column(name = "MIME_TYPE")
-    private String mimeType;
+    @Column(name = "ORIGINAL_NAME")
+    private String originalName;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -41,10 +41,24 @@ public class Picture {
     @Column(name = "UPLOADED_DATE")
     private LocalDateTime uploadedDate;
 
-    @Column(name = "NUMBER_OF_LIKES")
-    private int numberOfLikes;
+    @ElementCollection
+    @CollectionTable(name = "PICTURE_LIKED_BY", joinColumns = @JoinColumn(name = "OWNER_EMAIL"))
+    @Column(name = "USER_EMAIL")
+    private Set<String> likedBy;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "PICTURE_ID")
     private Set<PictureComment> comments;
+
+    public void addComment(PictureComment pictureComment) {
+        comments.add(pictureComment);
+    }
+
+    public void addLike(String userEmail) {
+        likedBy.add(userEmail);
+    }
+
+    public void removeLike(String userEmail) {
+        likedBy.remove(userEmail);
+    }
 }

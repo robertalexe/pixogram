@@ -10,7 +10,19 @@
 
     <mat-nav-list>
 
-      <h2 matSubheader> My Work </h2>
+      <h2 matSubheader> <a href="/homepage"> Newsfeed</a> </h2>
+
+      <mat-divider></mat-divider>
+
+      <h2 matSubheader> <a href="/picture-gallery">My Gallery </a> </h2>
+
+      <mat-divider></mat-divider>
+
+      <h2 matSubheader> <a href="/upload-picture">Upload </a> </h2>
+
+      <mat-divider></mat-divider>
+
+      <h2 matSubheader> <a href="/subscribers-list">Subscribers</a> </h2>
 
       <mat-divider></mat-divider>
 
@@ -20,7 +32,7 @@
 
   <mat-sidenav-content>
     <app-toolbar
-      (toggleSidenav)="sidenav.toggle()" [loggedInUser]="loggedInUser">
+      (toggleSidenav)="sidenav.toggle()">
     </app-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

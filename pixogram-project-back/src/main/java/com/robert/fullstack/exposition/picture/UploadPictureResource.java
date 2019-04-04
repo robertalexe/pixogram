@@ -1,6 +1,8 @@
 package com.robert.fullstack.exposition.picture;
 
 import com.robert.fullstack.application.picture.StorePicture;
+import com.robert.fullstack.application.picture.StorePictureCommand;
+import com.robert.fullstack.domain.pictures.Picture;
 import com.robert.fullstack.exposition.SingleValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +20,13 @@ public class UploadPictureResource {
     @Autowired
     private StorePicture storePicture;
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity uploadPicture(@RequestParam("file") MultipartFile file) {
-        storePicture.storePicture(file);
-        return new ResponseEntity(HttpStatus.OK);
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public ResponseEntity<String> uploadPicture(@RequestParam("file") MultipartFile file,
+                                        @RequestParam("pictureName") String pictureName,
+                                        @RequestParam("pictureDescription") String pictureDescription,
+                                        @RequestParam("shared") boolean shared
+    ){
+        Picture uploadedPicture = storePicture.storePicture(new StorePictureCommand(file, pictureName, shared, pictureDescription));
+        return new ResponseEntity(uploadedPicture.getPictureId(), HttpStatus.OK);
     }
 }

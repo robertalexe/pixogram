@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" *ngIf="loggedInUser" class="pixogram-toolbar">
+<mat-toolbar color="primary" *ngIf="authService.currentUserSubject | async" class="pixogram-toolbar">
 
   <mat-toolbar-row>
 
@@ -14,7 +14,7 @@
       <ul fxLayout fxLayoutGap="20px">
 
         <li fxHide.xs>
-          <button mat-icon-button>
+          <button mat-icon-button (click)="routes.navigate(['/profile'])">
             <mat-icon>settings</mat-icon>
           </button>
         </li>

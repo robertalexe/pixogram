@@ -1,3 +1,5 @@
+<br><br><br><br><br>
+
 <div *ngIf="currentFileUpload" class="progress">
   <div class="progress-bar progress-bar-info progress-bar-striped"
        role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
@@ -6,9 +8,34 @@
     {{progress.percentage}}%</div>
 </div>
 
-<label class="btn btn-default">
-  <input type="file" (change)="selectFile($event)">
-</label>
+<form class="upload-form" [formGroup]="myForm" (ngSubmit)="upload(myForm.value)">
 
-<button class="btn btn-success" [disabled]="!selectedFiles"
-        (click)="upload()">Upload</button>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="input-picture-name">Picture Name</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [formControl]="myForm.controls['inputPictureName']">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="input-picture-comment">Picture Comment</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [formControl]="myForm.controls['inputPictureComment']">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="input-picture-shared">Share To Followers</span>
+    </div>
+    <label class="switch">
+      <input type="checkbox" [formControl]="myForm.controls['inputPictureToggle']">
+      <span class="slider round"></span>
+    </label>  </div>
+
+  <div class="custom-file">
+    <input type="file" (change)="selectFile($event)" [formControl]="myForm.controls['inputFile']">
+  </div>
+
+  <button class="btn btn-success" [disabled]="!selectedFiles" type="submit">Upload</button>
+</form>

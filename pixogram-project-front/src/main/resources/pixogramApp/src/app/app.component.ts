@@ -9,14 +9,6 @@ import {AuthenticationService} from "./_services/authentication.service";
 export class AppComponent {
   title = 'pixogramApp';
 
-  private authenticatedUser:boolean = false;
-
-  constructor(private authService:AuthenticationService) {
-    this.authService.currentUserSubject.subscribe((data) => {
-      if (data.username) {
-        this.authenticatedUser = true;
-      }
-      ;
-    })
+  constructor() {
   }
 }

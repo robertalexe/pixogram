@@ -28,7 +28,7 @@ public class SdjUsers implements Users, UserDetailsService {
         Optional<User> maybeUserFound = usersSdj.findById(userName);
         if(maybeUserFound.isPresent()) {
             return new org.springframework.security.core.userdetails.User(
-                    maybeUserFound.get().getId(),
+                    maybeUserFound.get().getEmail(),
                     maybeUserFound.get().getPassword(),
                     getAuthority()
             );
@@ -39,6 +39,11 @@ public class SdjUsers implements Users, UserDetailsService {
     @Override
     public User findOne(String userName) {
         return usersSdj.findById(userName).orElseThrow( () -> new UsernameNotFoundException(userName));
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return usersSdj.findAll();
     }
 
     private List<SimpleGrantedAuthority> getAuthority() {
