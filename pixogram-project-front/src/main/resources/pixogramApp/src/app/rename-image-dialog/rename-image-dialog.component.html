@@ -1,0 +1,7 @@
+<form [formGroup]="myForm" (ngSubmit)="renameImage(myForm.value)">
+  <textarea matInput placeholder="New image name" [formControl]="myForm.controls['newImageName']"></textarea>
+
+  <div>
+    <button mat-raised-button type="submit">Submit</button>
+  </div>
+</form>

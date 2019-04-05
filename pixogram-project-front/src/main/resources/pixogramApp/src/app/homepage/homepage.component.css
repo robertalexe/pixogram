@@ -14,3 +14,7 @@
 .search-form {
   width: 90%;
 }
+
+app-img-wrapper img {
+  min-height: 120px;
+}

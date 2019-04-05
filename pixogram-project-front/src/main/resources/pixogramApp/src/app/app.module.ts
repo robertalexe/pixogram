@@ -25,6 +25,7 @@ import { PictureDialogComponent } from './picture-dialog/picture-dialog.componen
 import { SubscribeListComponent } from './subscribe-list/subscribe-list.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ImgWrapperComponent } from './img-wrapper/img-wrapper.component';
+import { RenameImageDialogComponent } from './rename-image-dialog/rename-image-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ImgWrapperComponent } from './img-wrapper/img-wrapper.component';
     PictureDialogComponent,
     SubscribeListComponent,
     ProfilePageComponent,
-    ImgWrapperComponent
+    ImgWrapperComponent,
+    RenameImageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { ImgWrapperComponent } from './img-wrapper/img-wrapper.component';
     MatSidenavModule
   ],
   entryComponents: [
-    PictureDialogComponent
+    PictureDialogComponent,
+    RenameImageDialogComponent
   ],
   bootstrap: [AppComponent]
 })

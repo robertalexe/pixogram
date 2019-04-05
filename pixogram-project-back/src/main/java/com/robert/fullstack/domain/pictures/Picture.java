@@ -61,4 +61,12 @@ public class Picture {
     public void removeLike(String userEmail) {
         likedBy.remove(userEmail);
     }
+
+    public void hidePicture() {
+        this.sharedToFollowers = false;
+    }
+
+    public void unhidePicture() {
+        this.sharedToFollowers = true;
+    }
 }

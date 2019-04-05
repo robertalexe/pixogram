@@ -19,4 +19,12 @@ public interface Pictures {
     void addLike(String pictureId);
 
     void removeLike(String pictureId);
+
+    void rename(String newImageName, String pictureId);
+
+    void delete(String pictureId);
+
+    void hide(String pictureId);
+
+    void unhide(String pictureId);
 }

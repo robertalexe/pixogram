@@ -111,4 +111,31 @@ public class SdjPictures implements Pictures {
         picture.removeLike(identitySupplier.get().getUsername());
         picturesSdj.saveAndFlush(picture);
     }
+
+    @Override
+    public void rename(String newImageName, String pictureId) {
+        Picture picture = picturesSdj.getOne(pictureId);
+        picture.setName(newImageName);
+        picturesSdj.saveAndFlush(picture);
+    }
+
+    @Override
+    public void delete(String pictureId) {
+        picturesSdj.deleteById(pictureId);
+        picturesSdj.flush();
+    }
+
+    @Override
+    public void hide(String pictureId) {
+        Picture picture = picturesSdj.getOne(pictureId);
+        picture.hidePicture();
+        picturesSdj.saveAndFlush(picture);
+    }
+
+    @Override
+    public void unhide(String pictureId) {
+        Picture picture = picturesSdj.getOne(pictureId);
+        picture.unhidePicture();
+        picturesSdj.saveAndFlush(picture);
+    }
 }
