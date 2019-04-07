@@ -24,7 +24,7 @@ public class NewsfeedPictures {
         Set<Follower> usersFollowed = followers.findFollowersForCurrentUser();
         Set<Picture> pictureIds = new HashSet<>();
         usersFollowed.forEach( follower -> {
-            pictureIds.addAll(pictures.getPicturesForUser(follower.getFollowedEmail()));
+            pictureIds.addAll(pictures.getPicturesForUser(follower.getFollowedEmail(), true));
         });
         return pictureIds;
     }

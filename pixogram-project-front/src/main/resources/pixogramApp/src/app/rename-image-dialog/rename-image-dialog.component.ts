@@ -23,8 +23,9 @@ export class RenameImageDialogComponent implements OnInit {
   }
 
   renameImage(formValues) {
-    this.http.post('http://localhost:8080/api/rename?pictureName=' + formValues.newImageName + '&pictureId=' + this.data, null).subscribe();
-    //this.dialogRef.close();
+    this.http.post('/api/rename?pictureName=' + formValues.newImageName + '&pictureId=' + this.data, null).subscribe( rsp => {
+      this.dialogRef.close();
+    });
   }
 
 }

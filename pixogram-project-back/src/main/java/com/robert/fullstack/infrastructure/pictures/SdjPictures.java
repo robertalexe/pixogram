@@ -79,8 +79,14 @@ public class SdjPictures implements Pictures {
     }
 
     @Override
-    public Set<Picture> getPicturesForUser(String username) {
-        List<Picture> allPicturesForUser = picturesSdj.findPicturesByOwnerEmail(username);
+    public Set<Picture> getPicturesForUser(String username, boolean sharedToFollowers) {
+        List<Picture> allPicturesForUser = picturesSdj.findPicturesByOwnerEmailAndSharedToFollowers(username, sharedToFollowers);
+        return new HashSet<>(allPicturesForUser);
+    }
+
+    @Override
+    public Set<Picture> getPicturesForMyGallery() {
+        List<Picture> allPicturesForUser = picturesSdj.findPicturesByOwnerEmail(identitySupplier.get().getUsername());
         return new HashSet<>(allPicturesForUser);
     }
 

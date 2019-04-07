@@ -12,7 +12,9 @@ public interface Pictures {
 
     Picture getPicture(String pictureId);
 
-    Set<Picture> getPicturesForUser(String username);
+    Set<Picture> getPicturesForUser(String username, boolean sharedToFollowers);
+
+    Set<Picture> getPicturesForMyGallery();
 
     void addComment(String pictureId, String comment);
 

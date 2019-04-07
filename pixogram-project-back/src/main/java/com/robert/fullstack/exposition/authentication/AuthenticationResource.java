@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/token")
+@CrossOrigin(origins = "*")
 public class AuthenticationResource {
 
     @Autowired

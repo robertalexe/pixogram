@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/profile-picture")
+@CrossOrigin(origins = "*")
 public class ProfilePictureResource {
 
     @Autowired

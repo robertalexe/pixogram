@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface PicturesSdj extends JpaRepository<Picture, String> {
 
-    public List<Picture> findPicturesByOwnerEmail(String ownerEmail);
+    List<Picture> findPicturesByOwnerEmail(String ownerEmail);
+
+    List<Picture> findPicturesByOwnerEmailAndSharedToFollowers(String ownerEmail, boolean sharedToFollowers);
 }

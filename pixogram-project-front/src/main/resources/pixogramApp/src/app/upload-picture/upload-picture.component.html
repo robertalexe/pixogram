@@ -1,14 +1,23 @@
-<br><br><br><br><br>
-
-<div *ngIf="currentFileUpload" class="progress">
-  <div class="progress-bar progress-bar-info progress-bar-striped"
-       role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
-       aria-valuemin="0" aria-valuemax="100"
-       [ngStyle]="{width:progress.percentage+'%'}">
-    {{progress.percentage}}%</div>
+<br><br><br>
+<div class="title" align="center">
+  <h2>Upload Picture</h2>
+  <br>
 </div>
 
-<form class="upload-form" [formGroup]="myForm" (ngSubmit)="upload(myForm.value)">
+<form class="upload-form" [formGroup]="myForm" (ngSubmit)="upload(myForm.value)" style="width:600px; margin: 0 auto; ">
+
+  <div align="center">
+    <button class="btn btn-success" [disabled]="!selectedFiles" type="submit" style="margin: 10px 10px;">Upload</button>
+    <button class="btn btn-danger" (click)="resetInputs()">Reset </button>
+  </div>
+
+  <div *ngIf="currentFileUpload" class="progress" style="width:600px; margin: 10px auto 10px; ">
+    <div class="progress-bar progress-bar-info progress-bar-striped"
+         role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+         aria-valuemin="0" aria-valuemax="100"
+         [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%</div>
+  </div>
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -26,7 +35,7 @@
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="input-picture-shared">Share To Followers</span>
+      <span class="input-group-text" id="input-picture-shared" style="margin-right: 50px;">Share To Followers</span>
     </div>
     <label class="switch">
       <input type="checkbox" [formControl]="myForm.controls['inputPictureToggle']">
@@ -37,5 +46,9 @@
     <input type="file" (change)="selectFile($event)" [formControl]="myForm.controls['inputFile']">
   </div>
 
-  <button class="btn btn-success" [disabled]="!selectedFiles" type="submit">Upload</button>
+  <div class="image-preview" *ngIf="imageSrc">
+    <h5>Image preview: </h5>
+    <img id="blah" [src]="imageSrc" />
+  </div>
+
 </form>

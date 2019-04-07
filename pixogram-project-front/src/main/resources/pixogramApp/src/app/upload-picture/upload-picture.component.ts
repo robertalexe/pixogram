@@ -15,6 +15,7 @@ export class UploadPictureComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
 
   myForm: FormGroup;
+  imageSrc: string;
 
   constructor(private uploadService: UploadPictureService, fb: FormBuilder) {
     this.myForm = fb.group({
@@ -31,6 +32,12 @@ export class UploadPictureComponent implements OnInit {
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageSrc = e.target.result;
+    };
+
+    reader.readAsDataURL(this.selectedFiles.item(0));
   }
 
   upload(formValues) {
@@ -45,7 +52,14 @@ export class UploadPictureComponent implements OnInit {
       }
     });
 
-    this.selectedFiles = undefined
+    this.selectedFiles = undefined;
+  }
+
+  resetInputs() {
+    this.myForm.reset();
+    this.selectedFiles = undefined;
+    this.currentFileUpload = undefined;
+    this.imageSrc = undefined;
   }
 
 }

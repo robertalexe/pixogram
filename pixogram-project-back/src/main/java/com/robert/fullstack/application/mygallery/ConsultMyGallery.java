@@ -20,8 +20,7 @@ public class ConsultMyGallery {
     private IdentitySupplier identitySupplier;
 
     public Set<String> getAllImageIds() {
-        return pictures.getPicturesForUser(
-                identitySupplier.get().getUsername()
+        return pictures.getPicturesForMyGallery(
         ).stream().map(Picture::getPictureId).collect(Collectors.toSet());
     }
 }

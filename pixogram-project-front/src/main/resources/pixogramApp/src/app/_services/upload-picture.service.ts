@@ -14,7 +14,7 @@ export class UploadPictureService {
 
     formdata.append('file', file);
 
-    const req = new HttpRequest('POST', 'http://localhost:8080/api/upload-image' + '?pictureName=' + name + '&pictureDescription=' + description + '&shared=' + shared, formdata, {
+    const req = new HttpRequest('POST', '/api/upload-image' + '?pictureName=' + name + '&pictureDescription=' + description + '&shared=' + shared, formdata, {
       reportProgress: true,
       responseType: 'text'
     });

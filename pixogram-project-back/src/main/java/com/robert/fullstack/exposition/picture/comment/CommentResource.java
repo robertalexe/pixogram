@@ -17,6 +17,7 @@ import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/api/comment")
+@CrossOrigin(origins = "*")
 public class CommentResource {
 
     @Autowired

@@ -1,19 +1,20 @@
-<br><br><br><br><br>
-<div class="title">
+<br><br><br>
+<div class="title" align="center">
   <h2>My Gallery</h2>
+  <br>
 </div>
-<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center">
   <mat-card class="card-picture" *ngFor="let picture of pictures">
     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
       <span fxFlex="80%">{{picture.title}}</span>
-      <mat-icon fxFlex="10%" (click)="changeName(picture.id);">mode_edit</mat-icon>
-      <mat-icon fxFlex="10%" (click)="delete(picture.id)">delete</mat-icon>
-      <mat-icon fxFlex="10%" (click)="download(picture.id, picture.title)">save_alt</mat-icon>
-      <mat-icon fxFlex="10%" *ngIf="!picture.visible" (click)="unhide(picture.id)">visibility</mat-icon>
-      <mat-icon fxFlex="10%" *ngIf="picture.visible" (click)="hide(picture.id)">visibility_off</mat-icon>
+      <mat-icon fxFlex="10%" (click)="changeName(picture.id);" matTooltip="Rename">mode_edit</mat-icon>
+      <mat-icon fxFlex="10%" (click)="delete(picture.id)" matTooltip="Delete">delete</mat-icon>
+      <mat-icon fxFlex="10%" (click)="download(picture.id, picture.title)" matTooltip="Download">save_alt</mat-icon>
+      <mat-icon fxFlex="10%" *ngIf="!picture.visible" (click)="unhide(picture.id)" matTooltip="Hide">visibility</mat-icon>
+      <mat-icon fxFlex="10%" *ngIf="picture.visible" (click)="hide(picture.id)" matTooltip="Unhide">visibility_off</mat-icon>
     </mat-card-title>
     <br>
-    <app-img-wrapper [src]="picture.img" (click)="display(picture.img, picture.id)"></app-img-wrapper>
+    <app-img-wrapper [src]="picture.img" (click)="display(picture.img, picture.id)" [parentStyle]="parentStyle"></app-img-wrapper>
     <br>
     <mat-card>Liked by {{picture.likedBy.length}} users</mat-card>
   </mat-card>

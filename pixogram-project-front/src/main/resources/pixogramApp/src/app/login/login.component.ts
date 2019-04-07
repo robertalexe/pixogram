@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  errorMessage = 'User or password invalid!';
+  errorFlag = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
           //location.reload();
         },
         error => {
-          this.router.navigate(['/forbidden'])
+          this.errorFlag = true;
           this.error = error;
           this.loading = false;
         });

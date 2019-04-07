@@ -12,7 +12,7 @@ export class ProfilePageComponent implements OnInit {
   private userProfile: UserProfile = new UserProfile();
 
   constructor(private http:HttpClient) {
-    this.http.get<UserProfile>('http://localhost:8080/api/user-details').subscribe( resp => {
+    this.http.get<UserProfile>('/api/user-details').subscribe( resp => {
       this.userProfile = resp;
     });
   }
@@ -21,7 +21,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   getUserProfilePictureUrl() {
-    return 'http://localhost:8080/api/profile-picture';
+    return '/api/profile-picture';
   }
 
 }

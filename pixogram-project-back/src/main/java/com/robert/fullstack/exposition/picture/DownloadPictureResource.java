@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/download-image")
+@CrossOrigin(origins = "*")
 public class DownloadPictureResource {
 
     @Autowired

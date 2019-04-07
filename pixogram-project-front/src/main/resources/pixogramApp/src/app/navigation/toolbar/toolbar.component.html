@@ -14,22 +14,24 @@
       <ul fxLayout fxLayoutGap="20px">
 
         <li fxHide.xs>
-          <button mat-icon-button (click)="routes.navigate(['/profile'])">
+          <button mat-icon-button (click)="routes.navigate(['/profile'])" matTooltip="Profile">
             <mat-icon>settings</mat-icon>
           </button>
         </li>
 
         <li fxHide.xs>
           <button mat-icon-button>
-            <mat-icon>help_outline</mat-icon>
+            <mat-icon matTooltip="Help">help_outline</mat-icon>
           </button>
         </li>
 
         <li>
-          <button mat-icon-button [matMenuTriggerFor]="auth">
+          <button mat-icon-button [matMenuTriggerFor]="auth" matTooltip="Logout">
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #auth="matMenu">
+            <div *ngIf="username">{{username}}</div>
+            <br>
             <button mat-menu-item (click)="logout()">
               <mat-icon>exit_to_app</mat-icon>
               <span>Sign out</span>

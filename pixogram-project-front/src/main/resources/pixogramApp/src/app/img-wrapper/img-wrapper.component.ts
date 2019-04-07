@@ -7,7 +7,10 @@ import {map, switchMap} from 'rxjs/operators';
 @Component({
   selector: 'app-img-wrapper',
   template: `
-    <img mat-card-image [src]="dataUrl$|async"/>
+    <div class="oversize">
+      <img mat-card-image [src]="dataUrl$|async" [ngStyle]="{'width':parentStyle == 'img-wrap' ? '300px':'550px'}"
+      style="margin-left: auto; margin-right: auto; display: block;"/>
+    </div>
   `
 })
 export class ImgWrapperComponent implements OnChanges  {
@@ -15,6 +18,7 @@ export class ImgWrapperComponent implements OnChanges  {
   // this makes sure that we can handle it when the src changes
   // or even when the component gets destroyed
   @Input() private src: string;
+  @Input() private parentStyle: string;
   private src$ = new BehaviorSubject(this.src);
   ngOnChanges(): void {
     this.src$.next(this.src);

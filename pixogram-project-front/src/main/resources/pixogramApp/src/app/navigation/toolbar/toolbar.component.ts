@@ -1,8 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuthenticationService} from "../../_services/authentication.service";
 import {Router} from "@angular/router";
-import {ProfilePictureService} from "../../_services/profile-picture.service";
-import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-toolbar',
@@ -13,8 +11,11 @@ export class ToolbarComponent implements OnInit {
 
   @Output() toggleSidenav = new EventEmitter<void>();
 
+  public username: string;
+
   constructor(private authService:AuthenticationService,
               private routes:Router) {
+    this.username = authService.currentUserSubject.getValue() ? authService.currentUserSubject.getValue().username : null;
   }
 
   ngOnInit() {

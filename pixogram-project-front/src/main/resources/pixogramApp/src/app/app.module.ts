@@ -11,18 +11,25 @@ import {JwtInterceptor} from "./_helper/jwt.interceptor";
 import {ErrorInterceptor} from "./_helper/error.interceptor";
 import {CustomMaterialModule} from "./_helper/custom.material";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
-import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import {MatListModule, MatSidenavModule} from "@angular/material";
+import {MatListModule, MatSidenavModule, MatSnackBarModule, MatTooltipModule} from "@angular/material";
 import { ToolbarComponent } from './navigation/toolbar/toolbar.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
-import { HomepageComponent } from './homepage/homepage.component';
+import {HomepageComponent, SnackbarPictureDisliked, SnackbarPictureLiked} from './homepage/homepage.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { UploadPictureComponent } from './upload-picture/upload-picture.component';
 import {UploadPictureService} from "./_services/upload-picture.service";
-import { UserPictureGalleryComponent } from './user-picture-gallery/user-picture-gallery.component';
+import {
+  SnackbarPictureDeleted,
+  SnackbarPictureHidden, SnackbarPictureUnHidden,
+  UserPictureGalleryComponent
+} from './user-picture-gallery/user-picture-gallery.component';
 import { PictureDialogComponent } from './picture-dialog/picture-dialog.component';
-import { SubscribeListComponent } from './subscribe-list/subscribe-list.component';
+import {
+  SnackbarSubscribed,
+  SnackbarUnSubscribed,
+  SubscribeListComponent
+} from './subscribe-list/subscribe-list.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { ImgWrapperComponent } from './img-wrapper/img-wrapper.component';
 import { RenameImageDialogComponent } from './rename-image-dialog/rename-image-dialog.component';
@@ -31,7 +38,6 @@ import { RenameImageDialogComponent } from './rename-image-dialog/rename-image-d
   declarations: [
     AppComponent,
     LoginComponent,
-    ProfilePictureComponent,
     ForbiddenComponent,
     ToolbarComponent,
     HomepageComponent,
@@ -42,7 +48,14 @@ import { RenameImageDialogComponent } from './rename-image-dialog/rename-image-d
     SubscribeListComponent,
     ProfilePageComponent,
     ImgWrapperComponent,
-    RenameImageDialogComponent
+    RenameImageDialogComponent,
+    SnackbarSubscribed,
+    SnackbarUnSubscribed,
+    SnackbarPictureHidden,
+    SnackbarPictureUnHidden,
+    SnackbarPictureDeleted,
+    SnackbarPictureLiked,
+    SnackbarPictureDisliked
   ],
   imports: [
     BrowserModule,
@@ -55,7 +68,9 @@ import { RenameImageDialogComponent } from './rename-image-dialog/rename-image-d
     NoopAnimationsModule,
     MatListModule,
     MatSidenavModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   providers: [
     HttpClient,
@@ -69,7 +84,14 @@ import { RenameImageDialogComponent } from './rename-image-dialog/rename-image-d
   ],
   entryComponents: [
     PictureDialogComponent,
-    RenameImageDialogComponent
+    RenameImageDialogComponent,
+    SnackbarSubscribed,
+    SnackbarUnSubscribed,
+    SnackbarPictureHidden,
+    SnackbarPictureUnHidden,
+    SnackbarPictureDeleted,
+    SnackbarPictureLiked,
+    SnackbarPictureDisliked
   ],
   bootstrap: [AppComponent]
 })
