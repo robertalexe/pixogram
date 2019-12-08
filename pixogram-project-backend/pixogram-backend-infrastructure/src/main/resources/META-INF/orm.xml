@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+                  http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+        version="2.1"
+>
+    <access>FIELD</access>
+
+    <entity class="com.robert.fullstack.domain.user.User">
+        <table name="APP_USERS"/>
+        <attributes>
+            <id name="email">
+                <column name="EMAIL"/>
+            </id>
+            <basic name="password">
+                <column name="PASSWORD"/>
+            </basic>
+            <basic name="profilePictureId">
+                <column name="PROFILE_PICTURE_ID"/>
+            </basic>
+            <basic name="registrationDate">
+                <column name="REG_DATE"/>
+            </basic>
+            <basic name="firstName">
+                <column name="FIRST_NAME"/>
+            </basic>
+            <basic name="lastName">
+                <column name="LAST_NAME"/>
+            </basic>
+            <basic name="active">
+                <column name="ACTIVE"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <entity class="com.robert.fullstack.domain.pictures.Picture">
+        <table name="USER_PICTURES"/>
+        <attributes>
+            <id name="pictureId">
+                <column name="PICTURE_ID"/>
+            </id>
+            <basic name="ownerEmail">
+                <column name="OWNER_EMAIL"/>
+            </basic>
+            <basic name="name">
+                <column name="PICTURE_NAME"/>
+            </basic>
+            <basic name="originalName">
+                <column name="ORIGINAL_NAME"/>
+            </basic>
+            <basic name="description">
+                <column name="DESCRIPTION"/>
+            </basic>
+            <basic name="sharedToFollowers">
+                <column name="SHARED_TO_FOLLOWERS"/>
+            </basic>
+            <basic name="uploadedDate">
+                <column name="UPLOADED_DATE"/>
+            </basic>
+            <one-to-many name="comments" orphan-removal="true">
+                <join-column name="PICTURE_ID"/>
+                <cascade><cascade-all/></cascade>
+            </one-to-many>
+            <element-collection name="likedBy">
+                <column name="USER_EMAIL"/>
+                <collection-table name="PICTURE_LIKED_BY">
+                    <join-column name="OWNER_EMAIL"/>
+                </collection-table>
+            </element-collection>
+            <embedded name="imagePath"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.robert.fullstack.domain.pictures.PictureComment">
+        <table name="USER_PICTURE_COMMENTS"/>
+        <attributes>
+            <id name="id">
+                <column name="ID"/>
+            </id>
+            <basic name="pictureId">
+                <column name="PICTURE_ID"/>
+            </basic>
+            <basic name="comment">
+                <column name="COMMENT"/>
+            </basic>
+            <basic name="commentDate">
+                <column name="COMMENT_DATE"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <entity class="com.robert.fullstack.domain.followers.Follower">
+        <table name="FOLLOWERS"/>
+        <attributes>
+            <id name="id"/>
+            <basic name="followerEmail">
+                <column name="FOLLOWER_ID"/>
+            </basic>
+            <basic name="followedEmail">
+                <column name="FOLLOWED_ID"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <embeddable class="com.robert.fullstack.domain.pictures.ImagePath">
+        <attributes>
+            <basic name="path">
+                <column name="IMAGE_PATH"/>
+            </basic>
+        </attributes>
+    </embeddable>
+</entity-mappings>
